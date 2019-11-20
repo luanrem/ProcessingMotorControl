@@ -87,11 +87,12 @@ void setup() {
     textSize(60);
     fill(100);
     text("Dispensador Automático - Serial", 150, 60);
-    textSize(40);
+    textSize(30);
     fill(0);
-    //text("Node 1", 80, 150);
-    //textSize(40);
-    //fill(0);
+    text("100%", width/2 + 20, height*2/3 - 60);
+    text("50%", width/2 + 20, height*2/3 + 40);
+    text("25%", width/2 + 20, height*2/3 + 140);
+
     //text("Node 2", 380, 150);
     //textSize(40);
     //fill(0);

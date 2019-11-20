@@ -4,10 +4,12 @@
 const int stepsPerRevolution = 500;
 int i=0;
 
+//Bit control. This is what Serial recieve.
 int w=1;
 int s=2;
 int d=3;
 int a=4;
+//Bit that control the distance the motor will run
 float distH = 128;
 int distZ = 1000;
 
@@ -25,7 +27,6 @@ void setup() {
 }
 
 void loop() {
-    // put your main code here, to run repeatedly:
 
     while(Serial.available() > 0){
         caractere = Serial.read();
@@ -46,8 +47,6 @@ void loop() {
             }
         }
 
-
-
         //Descer andar
         if(caractere == s*1){
             for(i = 0; i < 60; i++) {
@@ -66,7 +65,7 @@ void loop() {
         //Rodar para direita
         if(caractere == d*1){
             myStepper1.step(-distH);
-       }else if(caractere == d*5){
+        }else if(caractere == d*5){
             myStepper1.step(-distH);
         }else if(caractere == d*9){
             myStepper1.step(-distH);
@@ -75,63 +74,11 @@ void loop() {
         //Rodar para Esquerda
         if(caractere == a*1){
             myStepper1.step(+distH);
-       }else if(caractere == a*5){
+        }else if(caractere == a*5){
             myStepper1.step(+distH);
         }else if(caractere == a*9){
             myStepper1.step(+distH);
         }
-
-
-
-
-
-        if(caractere == w*5){
-
-            //1º - Descer um andar (eixo Z)
-            for(i = 0; i < 60; i++) {
-                myStepper2.step(-1000);
-            }
-        }
-
-        if(caractere == "a"){
-            //2º - Rodar meia casa para uma direação(Horizontal)
-            myStepper1.step(-127);
-        }
-
-        if(caractere == "d"){
-            //2º - Rodar meia casa para outra direção(Horizontal)
-            myStepper1.step(+127);
-        }
-
+caractere = 0;
     }
-
-    //1º - Descer um andar (eixo Z)
-    for(i = 0; i < 60; i++) {
-        myStepper2.step(+1000);
-    }
-
-    //2º - Rodar meia casa (Horizontal)
-    myStepper1.step(-127);
-
-
-
-    //3º - Levantar casinha (Eixo Z)
-    for(i = 0; i < 35; i++) {
-        myStepper2.step(-1000);
-    }
-
-    //4º - Descer casinha (Eixo Z)
-    for(i = 0; i < 35; i++) {
-        myStepper2.step(+1000);
-    }
-
-    //5º - Retorna meia casinha (Horizontal)
-    myStepper1.step(+127);
-
-
-    //6º - Zubir para o Zero novamente (Eixo Z)
-    for(i = 0; i < 60; i++) {
-        myStepper2.step(-1000);
-    }
-
 }

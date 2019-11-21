@@ -66,19 +66,29 @@ void loop() {
         if(caractere == d*1){
             myStepper1.step(-distH);
         }else if(caractere == d*5){
-            myStepper1.step(-distH);
+            myStepper1.step(-distH/2);
         }else if(caractere == d*9){
-            myStepper1.step(-distH);
+            myStepper1.step(-distH/4);
         }
 
         //Rodar para Esquerda
         if(caractere == a*1){
             myStepper1.step(+distH);
         }else if(caractere == a*5){
-            myStepper1.step(+distH);
+            myStepper1.step(+distH/2);
         }else if(caractere == a*9){
-            myStepper1.step(+distH);
+            myStepper1.step(+distH/4);
         }
 caractere = 0;
+
+digitalWrite(2, LOW);
+digitalWrite(3, LOW);
+digitalWrite(4, LOW);
+digitalWrite(5, LOW);
+digitalWrite(6, LOW);
+digitalWrite(7, LOW);
+digitalWrite(22, LOW);
+digitalWrite(24, LOW);
+ 
     }
 }

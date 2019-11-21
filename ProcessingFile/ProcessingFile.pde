@@ -1,6 +1,6 @@
-//import processing.serial.*;
+import processing.serial.*;
 
-//Serial myPort;
+Serial myPort;
 
 //defining the shapes
 int rectX, rectY;
@@ -41,7 +41,8 @@ void setup() {
 
     size(1200, 800);
     //myPort = new Serial(this, "/dev/ttyACM0", 115200);
-    //myPort = new Serial(this, "COM4", 115200);
+    myPort = new Serial(this, "COM3", 9600);
+    
     //colors of the buttons
     rectColor = color(30);
     rectHighlight = color(100);
@@ -245,7 +246,7 @@ void mousePressed() {
         //myPort.write('a');
 //        println("a");
     }
-        //myPort.write(mov);
+        myPort.write(mov);
     println(mov);
 }
 

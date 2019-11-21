@@ -39,11 +39,11 @@ void loop() {
             }
         }else if(caractere == w*5){
             for(i = 0; i < 60; i++) {
-                myStepper2.step(+distZ/2);
+                myStepper2.step(+distZ/4);
             }
         }else if(caractere == w*9){
             for(i = 0; i < 60; i++) {
-                myStepper2.step(+distZ/4);
+                myStepper2.step(+distZ/8);
             }
         }
 
@@ -54,11 +54,11 @@ void loop() {
             }
         }else if(caractere == s*5){
             for(i = 0; i < 60; i++) {
-                myStepper2.step(-distZ/2);
+                myStepper2.step(-distZ/4);
             }
         }else if(caractere == s*9){
             for(i = 0; i < 60; i++) {
-                myStepper2.step(-distZ/4);
+                myStepper2.step(-distZ/8);
             }
         }
 

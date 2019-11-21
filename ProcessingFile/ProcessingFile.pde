@@ -41,7 +41,7 @@ void setup() {
 
     size(1200, 800);
     //myPort = new Serial(this, "/dev/ttyACM0", 115200);
-    myPort = new Serial(this, "COM3", 9600);
+    myPort = new Serial(this, "COM6", 9600);
     
     //colors of the buttons
     rectColor = color(30);
@@ -87,14 +87,17 @@ void setup() {
     //texts on the interface
     textSize(60);
     fill(100);
-    text("Dispensador Automático - Serial", 150, 60);
+    text("Dispensador Automático - TCC2", 150, 60);
     textSize(30);
     fill(0);
     text("100%", width/2 + 20, height*2/3 - 60);
     text("50%", width/2 + 20, height*2/3 + 40);
     text("25%", width/2 + 20, height*2/3 + 140);
 
-    //text("Node 2", 380, 150);
+    text("Luan R. E. Martins", 800, 200);
+    text("Flavia", 800, 200 + 40);
+    text("Mathias", 800, 200 + 80);
+    text("Alunos:", 700, 150);
     //textSize(40);
     //fill(0);
     //text("Node 3", 680, 150);
@@ -170,7 +173,7 @@ void draw() {
             fill(pressColor); 
         }else fill(mod1Highlight);
     } else fill(mod1Color);
-    if(sizeRoute[0] == true && mousePressed != true) fill(selectColor);
+    if(sizeRoute[0] == true) fill(selectColor);
     rect(mod1X, mod1Y, modSize, modSize, 15);
 
     if (Over[5]) {
@@ -181,7 +184,7 @@ void draw() {
             fill(pressColor); 
         }else fill(mod2Highlight);
     } else fill(mod2Color);
-    if(sizeRoute[1] == true && mousePressed != true) fill(selectColor);
+    if(sizeRoute[1] == true) fill(selectColor);
     rect(mod2X, mod2Y, modSize, modSize, 15);
 
     if (Over[6]) {
@@ -192,7 +195,7 @@ void draw() {
             fill(pressColor); 
         }else fill(mod3Highlight);
     } else fill(mod3Color);
-    if(sizeRoute[2] == true && mousePressed != true) fill(selectColor);
+    if(sizeRoute[2] == true) fill(selectColor);
     rect(mod3X, mod3Y, modSize, modSize, 15);
 
 }
@@ -226,28 +229,35 @@ void update(int x, int y) {
 //events when the mouse is pressed: send a value through serial. Also, a check on the monitor is done to see whether the values are actually sent.
 void mousePressed() {
 
-    if (mousePressed && Over[0]) {
+    if (mousePressed && Over[1]) {
         mov = size(0)* 1; 
         //myPort.write('w');
-//        println(mov);
+        
+        myPort.write(mov);
+        println(mov);
     }
-    if (mousePressed && Over[1]) {
+    if (mousePressed && Over[0]) {
         mov = size(0)*2; 
         //myPort.write('s');
-  //      println("s");
+
+          myPort.write(mov);
+    println(mov);
     }
     if (mousePressed && Over[2]) {
         mov = size(0)*3; 
         //myPort.write('d');
- //       println("d");
-    }
+
+        myPort.write(mov);
+    println(mov);    }
     if (mousePressed && Over[3]) {
         mov = size(0)*4; 
         //myPort.write('a');
-//        println("a");
-    }
-        myPort.write(mov);
+        
+       myPort.write(mov);
     println(mov);
+    }
+        //myPort.write(mov);
+    //println(mov);
 }
 
 boolean overRect(int x, int y, int width, int height)  {
